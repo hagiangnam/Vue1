@@ -1,19 +1,28 @@
-import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-Vue.use(Router)
-Vue.use(BootstrapVue)
+import HomePage from '@/components/HomePage'
+import AppLayout from '@/components/layouts/AppLayout'
+import Vue from "vue";
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+      component: AppLayout,
+      children: [
+        {
+          path: '',
+          name: 'HomePage',
+          component: HomePage
+        },
+        {
+          path: 'welcome',
+          name: 'HelloWorld',
+          component: HelloWorld
+        }
+      ]
+    },
+
   ]
 })
